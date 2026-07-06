@@ -79,19 +79,19 @@ function SchedulePicker({
         <div className="schedule-picker__dates">
           {schedules.map((schedule) => (
               <button
-                  key={selectedSchedule.date}
+                  key={schedule.date}
                   type="button"
                   className={
-                    selectedSchedule?.date === selectedSchedule.date
+                    selectedSchedule?.date === schedule.date
                         ? 'schedule-picker__date-button schedule-picker__date-button--active'
                         : 'schedule-picker__date-button'
                   }
-                  onClick={() =>   {
+                  onClick={() => {
                     setSelectedSchedule(schedule);
                     onSeanceSelect(null);
                   }}
               >
-                {selectedSchedule.date}
+                {schedule.date}
               </button>
           ))}
         </div>
