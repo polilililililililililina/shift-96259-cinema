@@ -1,0 +1,64 @@
+.seat-picker__screen {
+    text-align: center;
+    padding: 8px;
+    margin: 16px 0;
+    background: #ddd;
+    border-radius: 4px;
+    font-size: 0.85rem;
+    letter-spacing: 2px;
+}
+
+.seat-picker__grid {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    overflow-x: auto;
+}
+
+.seat-picker__row {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.seat-picker__row-label {
+    width: 24px;
+    text-align: center;
+    font-size: 0.85rem;
+    color: #666;
+}
+
+.seat-picker__seat {
+    width: 32px;
+    height: 32px;
+    padding: 0;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    background: #e8f5e9;
+    cursor: pointer;
+    font-size: 0.7rem;
+}
+
+.seat-picker__seat--comfort {
+    background: #fff3e0;
+}
+
+.seat-picker__seat--vip {
+    background: #fce4ec;
+}
+
+.seat-picker__seat--selected {
+    background: #1a1a2e;
+    color: #fff;
+    border-color: #1a1a2e;
+}
+
+.seat-picker__empty {
+    width: 32px;
+    height: 32px;
+}
+
+.seat-picker__summary {
+    margin: 16px 0;
+    font-weight: 600;
+}

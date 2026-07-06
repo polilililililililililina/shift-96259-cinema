@@ -1,0 +1,13 @@
+:root {
+    --color-bg: #101010;
+    --color-surface: #1a1a1a;
+    --color-primary: #ff2db3;
+    --color-text: #ffffff;
+    --color-text-secondary: #9f9f9f;
+
+    --radius: 16px;
+
+    --transition: .2s ease;
+
+    --container-width: 1280px;
+}

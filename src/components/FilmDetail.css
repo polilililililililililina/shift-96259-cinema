@@ -1,0 +1,30 @@
+.film-details__image {
+    width: 100%;
+    max-height: 300px;
+    object-fit: cover;
+    border-radius: 8px;
+}
+
+.film-details__title {
+    margin: 16px 0 4px;
+}
+
+.film-details__original {
+    margin: 0 0 8px;
+    color: #666;
+}
+
+.film-details__meta,
+.film-details__ratings {
+    margin: 0 0 8px;
+    font-size: 0.9rem;
+}
+
+.film-details__description {
+    line-height: 1.5;
+}
+
+.film-details__staff {
+    margin-bottom: 16px;
+    font-size: 0.9rem;
+}

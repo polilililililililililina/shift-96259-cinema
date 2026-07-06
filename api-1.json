@@ -1,0 +1,1334 @@
+{
+  "openapi": "3.0.0",
+  "paths": {
+    "/api/auth/otp": {
+      "post": {
+        "operationId": "OtpsController_createOtp",
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateOtpDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "create otp",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/OtpResponse"
+                }
+              }
+            }
+          }
+        },
+        "summary": "Создание отп кода",
+        "tags": [
+          "☄️ otps"
+        ]
+      }
+    },
+    "/api/users/signin": {
+      "post": {
+        "operationId": "UsersController_signin",
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SignInDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "signin",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SignInResponse"
+                }
+              }
+            }
+          }
+        },
+        "summary": "Авторизация",
+        "tags": [
+          "💂‍♂️ users"
+        ]
+      }
+    },
+    "/api/users/profile": {
+      "patch": {
+        "operationId": "UsersController_updateProfile",
+        "parameters": [
+          {
+            "name": "authorization",
+            "in": "header",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateProfileDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "update profile",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UpdateProfileResponse"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "bearer": []
+          }
+        ],
+        "summary": "Обновить профиль пользователя",
+        "tags": [
+          "💂‍♂️ users"
+        ]
+      }
+    },
+    "/api/users/session": {
+      "get": {
+        "operationId": "UsersController_session",
+        "parameters": [
+          {
+            "name": "authorization",
+            "in": "header",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "session",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SessionResponse"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "bearer": []
+          }
+        ],
+        "summary": "Получить сессию пользователя",
+        "tags": [
+          "💂‍♂️ users"
+        ]
+      }
+    },
+    "/api/cinema/films": {
+      "get": {
+        "operationId": "CinemaController_getCinemaToday",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "films",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/FilmsResponse"
+                }
+              }
+            }
+          }
+        },
+        "summary": "Получить фильмы",
+        "tags": [
+          "🍿 cinema"
+        ]
+      }
+    },
+    "/api/cinema/film/{filmId}": {
+      "get": {
+        "operationId": "CinemaController_getFilm",
+        "parameters": [
+          {
+            "name": "filmId",
+            "required": true,
+            "in": "path",
+            "description": "Идентификатор фильма",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "film",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/FilmResponse"
+                }
+              }
+            }
+          }
+        },
+        "summary": "Получить фильм",
+        "tags": [
+          "🍿 cinema"
+        ]
+      }
+    },
+    "/api/cinema/film/{filmId}/schedule": {
+      "get": {
+        "operationId": "CinemaController_getFilmSchedule",
+        "parameters": [
+          {
+            "name": "filmId",
+            "required": true,
+            "in": "path",
+            "description": "Идентификатор фильма",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "schedule",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ScheduleResponse"
+                }
+              }
+            }
+          }
+        },
+        "summary": "Получить расписание фильма",
+        "tags": [
+          "🍿 cinema"
+        ]
+      }
+    },
+    "/api/cinema/payment": {
+      "post": {
+        "operationId": "CinemaController_createCinemaPayment",
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateCinemaPaymentDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "payment",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PaymentResponse"
+                }
+              }
+            }
+          }
+        },
+        "summary": "Оплатить билеты",
+        "tags": [
+          "🍿 cinema"
+        ]
+      }
+    },
+    "/api/cinema/orders": {
+      "get": {
+        "operationId": "CinemaController_getCinemaOrders",
+        "parameters": [
+          {
+            "name": "authorization",
+            "in": "header",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "orders",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CinemaOrdersResponse"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "bearer": []
+          }
+        ],
+        "summary": "Получить заказы",
+        "tags": [
+          "🍿 cinema"
+        ]
+      }
+    },
+    "/api/cinema/orders/cancel": {
+      "put": {
+        "operationId": "CinemaController_cancelCinemaOrder",
+        "parameters": [
+          {
+            "name": "authorization",
+            "in": "header",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CancelCinemaOrderDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "order cancel",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BaseResponse"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "bearer": []
+          }
+        ],
+        "summary": "Отменить заказ",
+        "tags": [
+          "🍿 cinema"
+        ]
+      }
+    }
+  },
+  "info": {
+    "title": "juniors bootcamp backend 🔥",
+    "description": "Апи для выполнения индивидуальных заданий",
+    "version": "1.0",
+    "contact": {}
+  },
+  "tags": [],
+  "servers": [
+    {
+      "url": ""
+    }
+  ],
+  "components": {
+    "securitySchemes": {
+      "bearer": {
+        "scheme": "bearer",
+        "bearerFormat": "JWT",
+        "type": "http"
+      }
+    },
+    "schemas": {
+      "CreateOtpDto": {
+        "type": "object",
+        "properties": {
+          "phone": {
+            "type": "string",
+            "example": "89990009999"
+          }
+        },
+        "required": [
+          "phone"
+        ]
+      },
+      "OtpResponse": {
+        "type": "object",
+        "properties": {
+          "success": {
+            "type": "boolean",
+            "description": "Статус запроса"
+          },
+          "reason": {
+            "type": "string",
+            "description": "Причина ошибки"
+          },
+          "retryDelay": {
+            "type": "number",
+            "example": 120000,
+            "description": "Время запроса повторного отп кода в мс"
+          }
+        },
+        "required": [
+          "success",
+          "retryDelay"
+        ]
+      },
+      "SignInDto": {
+        "type": "object",
+        "properties": {
+          "phone": {
+            "type": "string",
+            "example": "89990009999",
+            "description": "Номер телефона"
+          },
+          "code": {
+            "type": "number",
+            "example": 345231,
+            "description": "Отп код"
+          }
+        },
+        "required": [
+          "phone",
+          "code"
+        ]
+      },
+      "User": {
+        "type": "object",
+        "properties": {
+          "_id": {
+            "type": "string",
+            "description": "ID пользователя"
+          },
+          "phone": {
+            "type": "string",
+            "example": "89990009999",
+            "description": "Номер телефона"
+          },
+          "firstname": {
+            "type": "string",
+            "example": "firstname",
+            "description": "Имя"
+          },
+          "middlename": {
+            "type": "string",
+            "example": "middlename",
+            "description": "Отчество"
+          },
+          "lastname": {
+            "type": "string",
+            "example": "lastname",
+            "description": "Фамилия"
+          },
+          "email": {
+            "type": "string",
+            "example": "email@gmail.com",
+            "description": "Почта"
+          },
+          "city": {
+            "type": "string",
+            "example": "city",
+            "description": "Город"
+          }
+        },
+        "required": [
+          "_id",
+          "phone"
+        ]
+      },
+      "SignInResponse": {
+        "type": "object",
+        "properties": {
+          "success": {
+            "type": "boolean",
+            "description": "Статус запроса"
+          },
+          "reason": {
+            "type": "string",
+            "description": "Причина ошибки"
+          },
+          "user": {
+            "description": "Пользователь",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/User"
+              }
+            ]
+          },
+          "token": {
+            "type": "string",
+            "description": "Пользовательский токен"
+          }
+        },
+        "required": [
+          "success",
+          "user",
+          "token"
+        ]
+      },
+      "UpdateProfileProfileDto": {
+        "type": "object",
+        "properties": {
+          "firstname": {
+            "type": "string",
+            "example": "firstname",
+            "description": "Имя"
+          },
+          "middlename": {
+            "type": "string",
+            "example": "middlename",
+            "description": "Отчество"
+          },
+          "lastname": {
+            "type": "string",
+            "example": "lastname",
+            "description": "Фамилия"
+          },
+          "email": {
+            "type": "string",
+            "example": "email@gmail.com",
+            "description": "Почта"
+          },
+          "city": {
+            "type": "string",
+            "example": "city",
+            "description": "Город"
+          }
+        }
+      },
+      "UpdateProfileDto": {
+        "type": "object",
+        "properties": {
+          "profile": {
+            "description": "Данные пользователя",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/UpdateProfileProfileDto"
+              }
+            ]
+          },
+          "phone": {
+            "type": "string",
+            "example": "89990009999",
+            "description": "Номер телефона"
+          }
+        },
+        "required": [
+          "profile",
+          "phone"
+        ]
+      },
+      "UpdateProfileResponse": {
+        "type": "object",
+        "properties": {
+          "success": {
+            "type": "boolean",
+            "description": "Статус запроса"
+          },
+          "reason": {
+            "type": "string",
+            "description": "Причина ошибки"
+          },
+          "user": {
+            "description": "Пользователь",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/User"
+              }
+            ]
+          }
+        },
+        "required": [
+          "success",
+          "user"
+        ]
+      },
+      "SessionResponse": {
+        "type": "object",
+        "properties": {
+          "success": {
+            "type": "boolean",
+            "description": "Статус запроса"
+          },
+          "reason": {
+            "type": "string",
+            "description": "Причина ошибки"
+          },
+          "user": {
+            "description": "Пользователь",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/User"
+              }
+            ]
+          }
+        },
+        "required": [
+          "success",
+          "user"
+        ]
+      },
+      "Profession": {
+        "type": "string",
+        "enum": [
+          "actor",
+          "director"
+        ],
+        "description": "Список профессий"
+      },
+      "FilmStaff": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "example": "1",
+            "description": "Идентификатор персоны"
+          },
+          "professions": {
+            "type": "array",
+            "description": "Список профессий",
+            "example": [
+              "actor",
+              "director"
+            ],
+            "items": {
+              "$ref": "#/components/schemas/Profession"
+            }
+          },
+          "fullName": {
+            "type": "string",
+            "description": "Полное имя персоны"
+          },
+          "photo": {
+            "type": "string",
+            "description": "Фото персоны"
+          }
+        },
+        "required": [
+          "id",
+          "professions",
+          "fullName",
+          "photo"
+        ]
+      },
+      "Rating": {
+        "type": "string",
+        "enum": [
+          "g",
+          "pg",
+          "pg13",
+          "r",
+          "nc17"
+        ],
+        "description": "Возрастное ограничение"
+      },
+      "FilmUserRating": {
+        "type": "object",
+        "properties": {
+          "kinopoisk": {
+            "type": "string",
+            "example": "10",
+            "description": "Рейтинг кинопоиск"
+          },
+          "imdb": {
+            "type": "string",
+            "example": "10",
+            "description": "Рейтинг imdb"
+          }
+        },
+        "required": [
+          "kinopoisk",
+          "imdb"
+        ]
+      },
+      "Country": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "code": {
+            "type": "string"
+          },
+          "code2": {
+            "type": "string"
+          },
+          "id": {
+            "type": "number"
+          }
+        },
+        "required": [
+          "name",
+          "code",
+          "code2",
+          "id"
+        ]
+      },
+      "Film": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "example": "1",
+            "description": "Идентификатор фильма"
+          },
+          "name": {
+            "type": "string",
+            "description": "Название фильма"
+          },
+          "originalName": {
+            "type": "string",
+            "description": "Оригинальное название"
+          },
+          "description": {
+            "type": "string",
+            "description": "Описание фильма"
+          },
+          "releaseDate": {
+            "type": "string",
+            "description": "Дата выхода"
+          },
+          "actors": {
+            "description": "Актеры",
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/FilmStaff"
+            }
+          },
+          "directors": {
+            "description": "Режиссер",
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/FilmStaff"
+            }
+          },
+          "runtime": {
+            "type": "number",
+            "description": "Продолжительность"
+          },
+          "ageRating": {
+            "description": "Возрастное ограничение",
+            "example": "g",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/Rating"
+              }
+            ]
+          },
+          "genres": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "userRatings": {
+            "description": "Рейтинг пользователей",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/FilmUserRating"
+              }
+            ]
+          },
+          "img": {
+            "type": "string",
+            "description": "Изображение фильма"
+          },
+          "country": {
+            "description": "Страна",
+            "nullable": true,
+            "type": "object",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/Country"
+              }
+            ]
+          }
+        },
+        "required": [
+          "id",
+          "name",
+          "originalName",
+          "description",
+          "releaseDate",
+          "actors",
+          "directors",
+          "runtime",
+          "ageRating",
+          "genres",
+          "userRatings",
+          "img"
+        ]
+      },
+      "FilmsResponse": {
+        "type": "object",
+        "properties": {
+          "success": {
+            "type": "boolean",
+            "description": "Статус запроса"
+          },
+          "reason": {
+            "type": "string",
+            "description": "Причина ошибки"
+          },
+          "films": {
+            "description": "Фильмы",
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Film"
+            }
+          }
+        },
+        "required": [
+          "success",
+          "films"
+        ]
+      },
+      "FilmResponse": {
+        "type": "object",
+        "properties": {
+          "success": {
+            "type": "boolean",
+            "description": "Статус запроса"
+          },
+          "reason": {
+            "type": "string",
+            "description": "Причина ошибки"
+          },
+          "film": {
+            "description": "Фильм",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/Film"
+              }
+            ]
+          }
+        },
+        "required": [
+          "success",
+          "film"
+        ]
+      },
+      "FilmHall": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "example": "red",
+            "description": "Название зала"
+          },
+          "places": {
+            "example": [
+              [
+                {
+                  "type": "econom",
+                  "price": 100
+                }
+              ]
+            ],
+            "description": "Места в зале",
+            "items": {
+              "type": "array",
+              "items": {
+                "type": "filmHallCell"
+              }
+            },
+            "type": "array"
+          }
+        },
+        "required": [
+          "name",
+          "places"
+        ]
+      },
+      "FilmScheduleSeance": {
+        "type": "object",
+        "properties": {
+          "time": {
+            "type": "string",
+            "description": "Время сеанса",
+            "example": "12:00"
+          },
+          "hall": {
+            "description": "Зал",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/FilmHall"
+              }
+            ]
+          }
+        },
+        "required": [
+          "time",
+          "hall"
+        ]
+      },
+      "FilmSchedule": {
+        "type": "object",
+        "properties": {
+          "date": {
+            "type": "string",
+            "description": "Дата",
+            "example": "01.01.2024"
+          },
+          "seances": {
+            "description": "Сеансы",
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/FilmScheduleSeance"
+            }
+          }
+        },
+        "required": [
+          "date",
+          "seances"
+        ]
+      },
+      "ScheduleResponse": {
+        "type": "object",
+        "properties": {
+          "success": {
+            "type": "boolean",
+            "description": "Статус запроса"
+          },
+          "reason": {
+            "type": "string",
+            "description": "Причина ошибки"
+          },
+          "schedules": {
+            "description": "Расписание",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/FilmSchedule"
+              }
+            ]
+          }
+        },
+        "required": [
+          "success",
+          "schedules"
+        ]
+      },
+      "CreatePaymentPersonDto": {
+        "type": "object",
+        "properties": {
+          "firstname": {
+            "type": "string",
+            "example": "firstname",
+            "description": "Имя"
+          },
+          "lastname": {
+            "type": "string",
+            "example": "lastname",
+            "description": "Фамилия"
+          },
+          "middlename": {
+            "type": "string",
+            "example": "middlename",
+            "description": "Отчество"
+          },
+          "phone": {
+            "type": "string",
+            "example": "89990009999",
+            "description": "Телефон"
+          }
+        },
+        "required": [
+          "firstname",
+          "lastname",
+          "middlename",
+          "phone"
+        ]
+      },
+      "CreatePaymentDebitCardDto": {
+        "type": "object",
+        "properties": {
+          "pan": {
+            "type": "string",
+            "example": "1111 1111",
+            "description": "Номер карты"
+          },
+          "expireDate": {
+            "type": "string",
+            "example": "11/11",
+            "description": "Срок действие карты"
+          },
+          "cvv": {
+            "type": "string",
+            "example": "111",
+            "description": "Код карты"
+          }
+        },
+        "required": [
+          "pan",
+          "expireDate",
+          "cvv"
+        ]
+      },
+      "CreatePaymentSeanceDto": {
+        "type": "object",
+        "properties": {
+          "date": {
+            "type": "string",
+            "example": "29.06.23",
+            "description": "Дата сеанса"
+          },
+          "time": {
+            "type": "string",
+            "example": "10:00",
+            "description": "Время сеанса"
+          }
+        },
+        "required": [
+          "date",
+          "time"
+        ]
+      },
+      "CreatePaymentTicketsDto": {
+        "type": "object",
+        "properties": {
+          "row": {
+            "type": "number",
+            "example": 1,
+            "description": "Ряд"
+          },
+          "column": {
+            "type": "number",
+            "example": 1,
+            "description": "Место"
+          }
+        },
+        "required": [
+          "row",
+          "column"
+        ]
+      },
+      "CreateCinemaPaymentDto": {
+        "type": "object",
+        "properties": {
+          "filmId": {
+            "type": "string",
+            "description": "Идентификатор фильма"
+          },
+          "person": {
+            "description": "Покупатель",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/CreatePaymentPersonDto"
+              }
+            ]
+          },
+          "debitCard": {
+            "description": "Банковская карта",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/CreatePaymentDebitCardDto"
+              }
+            ]
+          },
+          "seance": {
+            "description": "Сеанс фильма",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/CreatePaymentSeanceDto"
+              }
+            ]
+          },
+          "tickets": {
+            "description": "Билеты",
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/CreatePaymentTicketsDto"
+            }
+          }
+        },
+        "required": [
+          "filmId",
+          "person",
+          "debitCard",
+          "seance",
+          "tickets"
+        ]
+      },
+      "CinemaTicketSeance": {
+        "type": "object",
+        "properties": {
+          "date": {
+            "type": "string",
+            "example": "29.06.23",
+            "description": "Дата сеанса"
+          },
+          "time": {
+            "type": "string",
+            "example": "10:00",
+            "description": "Время сеанса"
+          }
+        },
+        "required": [
+          "date",
+          "time"
+        ]
+      },
+      "CinemaTicketStatus": {
+        "type": "string",
+        "enum": [
+          "paid",
+          "cancelled"
+        ],
+        "description": "Статус билета"
+      },
+      "CinemaTicket": {
+        "type": "object",
+        "properties": {
+          "_id": {
+            "type": "string",
+            "description": "ID билета"
+          },
+          "filmId": {
+            "type": "string",
+            "description": "Идентификатор фильма"
+          },
+          "orderId": {
+            "type": "string",
+            "description": "Идентификатор заказа"
+          },
+          "row": {
+            "type": "number",
+            "example": 1,
+            "description": "Ряд"
+          },
+          "column": {
+            "type": "number",
+            "example": 1,
+            "description": "Место"
+          },
+          "seance": {
+            "description": "Сеанс фильма",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/CinemaTicketSeance"
+              }
+            ]
+          },
+          "phone": {
+            "type": "string",
+            "example": "89990009999",
+            "description": "Телефон"
+          },
+          "status": {
+            "description": "Статус билета",
+            "example": "paid",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/CinemaTicketStatus"
+              }
+            ]
+          }
+        },
+        "required": [
+          "_id",
+          "filmId",
+          "orderId",
+          "row",
+          "column",
+          "seance",
+          "phone",
+          "status"
+        ]
+      },
+      "FilmPerson": {
+        "type": "object",
+        "properties": {
+          "firstname": {
+            "type": "string",
+            "example": "firstname",
+            "description": "Имя"
+          },
+          "lastname": {
+            "type": "string",
+            "example": "lastname",
+            "description": "Фамилия"
+          },
+          "middlename": {
+            "type": "string",
+            "example": "middlename",
+            "description": "Отчество"
+          },
+          "phone": {
+            "type": "string",
+            "example": "89990009999",
+            "description": "Телефон"
+          }
+        },
+        "required": [
+          "firstname",
+          "lastname",
+          "middlename",
+          "phone"
+        ]
+      },
+      "CinemaOrderStatus": {
+        "type": "string",
+        "enum": [
+          "paid",
+          "canceled"
+        ],
+        "description": "Статус заказа"
+      },
+      "CinemaOrder": {
+        "type": "object",
+        "properties": {
+          "_id": {
+            "type": "string",
+            "description": "ID заказа"
+          },
+          "film": {
+            "description": "Название фильма",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/Film"
+              }
+            ]
+          },
+          "orderNumber": {
+            "type": "number",
+            "description": "Номер заказа"
+          },
+          "tickets": {
+            "description": "Билеты",
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/CinemaTicket"
+            }
+          },
+          "person": {
+            "description": "Данные пользователя",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/FilmPerson"
+              }
+            ]
+          },
+          "status": {
+            "description": "Статус заказа",
+            "example": "paid",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/CinemaOrderStatus"
+              }
+            ]
+          }
+        },
+        "required": [
+          "_id",
+          "film",
+          "orderNumber",
+          "tickets",
+          "person",
+          "status"
+        ]
+      },
+      "PaymentResponse": {
+        "type": "object",
+        "properties": {
+          "success": {
+            "type": "boolean",
+            "description": "Статус запроса"
+          },
+          "reason": {
+            "type": "string",
+            "description": "Причина ошибки"
+          },
+          "order": {
+            "description": "Заказ",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/CinemaOrder"
+              }
+            ]
+          }
+        },
+        "required": [
+          "success",
+          "order"
+        ]
+      },
+      "CinemaOrdersResponse": {
+        "type": "object",
+        "properties": {
+          "success": {
+            "type": "boolean",
+            "description": "Статус запроса"
+          },
+          "reason": {
+            "type": "string",
+            "description": "Причина ошибки"
+          },
+          "orders": {
+            "description": "Заказы",
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/CinemaOrder"
+            }
+          }
+        },
+        "required": [
+          "success",
+          "orders"
+        ]
+      },
+      "CancelCinemaOrderDto": {
+        "type": "object",
+        "properties": {
+          "orderId": {
+            "type": "string",
+            "description": "Идентификатор билета"
+          }
+        },
+        "required": [
+          "orderId"
+        ]
+      },
+      "BaseResponse": {
+        "type": "object",
+        "properties": {
+          "success": {
+            "type": "boolean",
+            "description": "Статус запроса"
+          },
+          "reason": {
+            "type": "string",
+            "description": "Причина ошибки"
+          }
+        },
+        "required": [
+          "success"
+        ]
+      }
+    }
+  }
+}

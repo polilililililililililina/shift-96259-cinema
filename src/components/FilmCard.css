@@ -1,0 +1,33 @@
+.film-card {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    padding: 0;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    overflow: hidden;
+    background: #fff;
+    cursor: pointer;
+    text-align: left;
+}
+
+.film-card__image {
+    width: 100%;
+    aspect-ratio: 2 / 3;
+    object-fit: cover;
+}
+
+.film-card__info {
+    padding: 12px;
+}
+
+.film-card__title {
+    margin: 0 0 8px;
+    font-size: 1rem;
+}
+
+.film-card__meta {
+    margin: 0;
+    font-size: 0.85rem;
+    color: #666;
+}

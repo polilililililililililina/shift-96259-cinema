@@ -1,0 +1,20 @@
+.payment-form__fieldset {
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 16px;
+    margin-bottom: 16px;
+}
+
+.payment-form__label {
+    display: block;
+    margin-bottom: 12px;
+}
+
+.payment-form__label input {
+    display: block;
+    width: 100%;
+    margin-top: 4px;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
